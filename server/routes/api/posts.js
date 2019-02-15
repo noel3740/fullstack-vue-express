@@ -45,11 +45,11 @@ router.delete("/:id", (req, res) => {
 //Function that loads the posts collection from the mongo db
 async function loadPostsCollection() {
     const client = await mongodb.MongoClient.connect(
-        "mongodb://abc123:Green001@cluster0-shard-00-00-rxobv.mongodb.net:27017,cluster0-shard-00-01-rxobv.mongodb.net:27017,cluster0-shard-00-02-rxobv.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true", {
+            process.env.MONGODB_URI, {
             useNewUrlParser: true
         });
 
-    return client.db("vue_express").collection("posts");
+    return client.db("heroku_s1bzcrk3").collection("posts");
 }
 
 module.exports = router;
